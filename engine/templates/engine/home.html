@@ -1,0 +1,25 @@
+{% extends 'engine/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    div {
+        text-align: center;
+    }
+    .search-bar{
+        margin-top: 7%;
+    }
+</style>
+    <div class="home">
+        <h1>Bunny Search Engine</h1>
+        <img src="../static/images/bunny.png" alt="bunny search engine"  width="150" height="150">
+        <div class="search-bar">
+            <form method="POST" action="results">
+                {% csrf_token %}
+                <input class="form-control form-control-lg" type="text" placeholder="what are you searching for?" name="search">
+                <button type="submit" class="btn btn-dark">search</button>
+
+            </form>
+        </div>
+       
+    </div>
+{% endblock content %}

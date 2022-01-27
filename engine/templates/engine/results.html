@@ -1,0 +1,29 @@
+{% extends 'engine/base.html'%}
+
+{% block content %}
+<style>
+    .search-bar{
+        margin-top: 2%;
+    }
+    .search-results{
+        margin-top: 2%;
+    }
+</style>
+    <div class="search-bar">
+        <form method="POST">
+            {% csrf_token %}
+            <input class="form-control form-control-lg" type="text" placeholder="what are you searching for?" name="search">
+        </form>
+    </div>
+    <div class="search-results">
+        {% if results%}
+            {% for result in results%}
+                <h4><a href="https://{{ result.2}}">{{ result.0 }}</a></h1>
+                <h5>{{ result.1 }}</h1>
+                <a href="https://{{ result.2}}">{{ result.2 }}</a>
+                <br/>
+                <br/>
+            {% endfor%}
+        {% endif%}
+    </div>
+{% endblock content %}
